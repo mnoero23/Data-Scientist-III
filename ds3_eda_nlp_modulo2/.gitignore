@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+
+# Los datos de la cátedra se descargan siguiendo data/README.md.
+data/*.csv
+
+# El corpus preprocesado se regenera ejecutando el script.
+results/ag_news_train_preprocesado.csv
+

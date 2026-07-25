@@ -1,0 +1,2 @@
+documentos_train,clases,mediana_tokens,percentil_95_tokens,documentos_vacios,stopwords_en_top_50
+8000,4,23.0,32,0,4
