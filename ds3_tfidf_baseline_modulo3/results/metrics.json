@@ -1,0 +1,35 @@
+{
+  "random_state": 42,
+  "train_documents": 8000,
+  "test_documents": 2000,
+  "classes": [
+    "World",
+    "Sports",
+    "Business",
+    "Sci_Tech"
+  ],
+  "selected_config": {
+    "name": "uni_bi_40k",
+    "max_features": 40000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "max_df": 0.98,
+    "sublinear_tf": true
+  },
+  "vocabulary_size": 25886,
+  "train_matrix_shape": [
+    8000,
+    25886
+  ],
+  "test_matrix_shape": [
+    2000,
+    25886
+  ],
+  "test_accuracy": 0.8925,
+  "test_macro_f1": 0.8924806441530619,
+  "test_weighted_f1": 0.8924806441530619,
+  "test_errors": 215
+}

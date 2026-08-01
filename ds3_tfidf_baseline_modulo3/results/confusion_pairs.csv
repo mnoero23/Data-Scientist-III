@@ -1,0 +1,13 @@
+real,predicha,errores
+Business,Sci_Tech,44
+Sci_Tech,Business,44
+World,Business,35
+Business,World,24
+World,Sci_Tech,13
+Sci_Tech,World,13
+World,Sports,12
+Sports,World,8
+Sci_Tech,Sports,7
+Business,Sports,6
+Sports,Business,5
+Sports,Sci_Tech,4
