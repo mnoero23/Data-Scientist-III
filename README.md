@@ -13,7 +13,7 @@ Transformer ajustado con LoRA para compararlos sobre el mismo conjunto de test.
 |---|---|---|---|
 | Módulo 1 | [Pipeline base de Deep Learning](ds3_pipeline_base_1/) | Implementar entrenamiento y validación reproducibles con PyTorch sobre Iris | Accuracy de validación: **93,33%** |
 | Módulo 2 | [Preprocesamiento y EDA de NLP](ds3_eda_nlp_modulo2/) | Limpiar, lematizar y diagnosticar AG News sin usar el test | P95: **32 tokens**; 4 clases balanceadas |
-| Módulo 3 | Clasificador TF-IDF | Construir el baseline supervisado sobre el corpus del Módulo 2 | Próximamente |
+| Módulo 3 | [Clasificador supervisado con TF-IDF](ds3_tfidf_baseline_modulo3/) | Construir el baseline supervisado sobre el corpus del Módulo 2 | Accuracy: **89,25%**; F1 Macro: **0,8925** |
 | Módulo 4 | Transformer con LoRA | Ajustar eficientemente un Transformer sobre el mismo corpus | Próximamente |
 | Proyecto final | Comparación de modelos | Comparar TF-IDF y Transformer + LoRA sobre el mismo test | Próximamente |
 
@@ -53,6 +53,25 @@ Principales resultados:
 
 ![Distribución de clases](ds3_eda_nlp_modulo2/reports/figures/distribucion_clases.png)
 
+## Módulo 3 - Clasificador supervisado con TF-IDF
+
+Se construyó un baseline reproducible de clasificación multiclase sobre AG News
+utilizando `TfidfVectorizer` y un clasificador `LinearSVC`. La selección de
+parámetros se realizó únicamente dentro del conjunto de entrenamiento para
+evitar data leakage.
+
+Principales resultados sobre 2.000 noticias de test:
+
+- Accuracy: **89,25%**;
+- F1 Macro: **0,8925**;
+- mejor configuración: unigramas + bigramas y hasta 40.000 características;
+- `Sports` fue la categoría más fácil de predecir;
+- la mayor confusión se produjo entre `Business` y `Sci_Tech`.
+
+[Ver proyecto, código y resultados](ds3_tfidf_baseline_modulo3/)
+
+![Matriz de confusión](ds3_tfidf_baseline_modulo3/results/confusion_matrix.png)
+
 ## Principios del proyecto
 
 - **Reproducibilidad:** semillas, dependencias y parámetros documentados.
@@ -87,6 +106,11 @@ Data-Scientist-III/
 │   ├── results/
 │   ├── src/
 │   └── README.md
+├── ds3_tfidf_baseline_modulo3/
+│   ├── data/
+│   ├── results/
+│   ├── src/
+│   └── README.md
 └── README.md
 ```
 
@@ -97,3 +121,4 @@ reproducción de resultados.
 
 **Matías Noero**  
 Analista de datos en formación continua hacia Data Science, NLP y Deep Learning.
+
