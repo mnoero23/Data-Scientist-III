@@ -4,6 +4,8 @@ Repositorio central de proyectos, pre-entregas y artefactos finales del curso **
 
 El recorrido construye una solución end-to-end: fundamentos de redes neuronales, preparación de un corpus real, baseline TF-IDF, fine-tuning eficiente de un Transformer con LoRA y comparación final sobre el mismo conjunto de prueba.
 
+**[Comenzar con la guía rápida de instalación y ejecución](QUICKSTART.md)**
+
 ## Proyectos
 
 | Etapa | Proyecto | Objetivo | Resultado principal |
@@ -79,6 +81,7 @@ Fine-tuning eficiente con r=8, alpha=16, dropout=0,1, target modules `q_lin`/`v_
 
 ```text
 Data-Scientist-III/
+├── QUICKSTART.md
 ├── 01_modulo1_pipeline_pytorch/
 ├── 02_modulo2_eda_nlp/
 ├── 03_modulo3_tfidf_baseline/
