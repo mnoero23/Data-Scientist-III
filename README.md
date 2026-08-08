@@ -5,6 +5,7 @@
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-TF--IDF-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Transformers](https://img.shields.io/badge/Hugging%20Face-Transformers-FFD21E)](https://huggingface.co/docs/transformers/)
 [![Estado](https://img.shields.io/badge/Curso-Completado-2EA44F)](#proyecto-final)
+[![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-8A2BE2)](LICENSE)
 
 Repositorio central de proyectos, pre-entregas y artefactos finales del curso **Data Scientist III**.
 
@@ -21,6 +22,7 @@ El recorrido construye una solución end-to-end: fundamentos de redes neuronales
 - [Reproducibilidad](#reproducibilidad)
 - [Estructura](#estructura-del-repositorio)
 - [Tecnologías](#tecnologías)
+- [Licencia y autoría](#licencia-y-autoría)
 
 ## Recorrido por módulos
 
@@ -74,6 +76,9 @@ Para ejecutar los proyectos, consultá [QUICKSTART.md](QUICKSTART.md).
 
 ```text
 Data-Scientist-III/
+├── .gitattributes
+├── .gitignore
+├── LICENSE
 ├── QUICKSTART.md
 ├── 01_modulo1_pipeline_pytorch/
 ├── 02_modulo2_eda_nlp/
@@ -101,6 +106,12 @@ Data-Scientist-III/
 | Transformers | Hugging Face Transformers, PEFT, LoRA |
 | Visualización | Matplotlib, Seaborn |
 | Entornos | Google Colab, Jupyter |
+
+## Licencia y autoría
+
+El **código fuente** de este repositorio se distribuye bajo la [Licencia MIT](LICENSE).
+
+Los informes, presentaciones, PDFs y demás entregables académicos conservan la autoría de **Matías Noero**. Pueden consultarse y citarse con atribución; la Licencia MIT no se extiende automáticamente a esos materiales ni a datasets o recursos de terceros.
 
 ## Autor
 
