@@ -11,7 +11,7 @@ El recorrido construye una solución end-to-end: fundamentos de redes neuronales
 | Módulo 1 | [Pipeline base de Deep Learning](ds3_pipeline_base_1/) | Implementar entrenamiento y validación reproducibles con PyTorch sobre Iris | Accuracy de validación: **93,33%** |
 | Módulo 2 | [Preprocesamiento y EDA de NLP](ds3_eda_nlp_modulo2/) | Limpiar, lematizar y diagnosticar AG News sin usar el test | P95: **32 tokens**; 4 clases balanceadas |
 | Módulo 3 | [Clasificador supervisado con TF-IDF](ds3_tfidf_baseline_modulo3/) | Construir un baseline supervisado sobre el corpus del Módulo 2 | F1 weighted: **0,8925** |
-| Módulo 4 | [Transformer con LoRA](course_summary/) | Ajustar DistilBERT de forma eficiente sobre AG News | F1 weighted: **0,9070**; 1,095% entrenable |
+| Módulo 4 | [Transformer con LoRA](ds3_lora_modulo4/) | Ajustar DistilBERT de forma eficiente sobre AG News | F1 weighted: **0,9070**; 1,095% entrenable |
 | Proyecto final | [Capstone y resumen integral](course_summary/) | Comparar TF-IDF y DistilBERT + LoRA sobre el mismo test | **+1,46 pp** de F1 weighted con LoRA |
 
 ## Descargables finales
@@ -55,7 +55,7 @@ Baseline multiclase con `TfidfVectorizer` y `LinearSVC`. La selección de parám
 
 Fine-tuning eficiente con r=8, alpha=16, dropout=0,1, target modules `q_lin`/`v_lin`, learning rate 2e-4 y 3 épocas. Se entrenaron 741.124 de 67.697.672 parámetros.
 
-[Ver resumen, presentación e informe final](course_summary/)
+[Ver notebook, configuración y resultados](ds3_lora_modulo4/)
 
 ## Principios del proyecto
 
@@ -82,6 +82,10 @@ Data-Scientist-III/
 ├── ds3_pipeline_base_1/
 ├── ds3_eda_nlp_modulo2/
 ├── ds3_tfidf_baseline_modulo3/
+├── ds3_lora_modulo4/
+│   ├── results/
+│   ├── Noero_Matias_LoRA_resultados.zip
+│   └── README.md
 ├── course_summary/
 │   ├── README.md
 │   ├── Resumen_Curso_Data_Scientist_III_Noero_Matias.pdf

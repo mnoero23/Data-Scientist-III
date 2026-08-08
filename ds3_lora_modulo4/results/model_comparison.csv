@@ -1,0 +1,3 @@
+Modelo,Precision Macro,Recall Macro,F1 Macro,Accuracy,Parámetros entrenables,Tiempo entrenamiento (s)
+TF-IDF + LinearSVC,0.8926403988890391,0.8925,0.8924806441530619,0.8925,,
+DistilBERT + LoRA,0.9076465007325161,0.907,0.907048394869281,0.907,741124.0,87.7120449979999
