@@ -8,7 +8,10 @@ Adaptar `distilbert-base-uncased` mediante **LoRA (Low-Rank Adaptation)** y comp
 
 ## Notebook
 
-[Abrir notebook en Google Colab](https://colab.research.google.com/drive/1Jw5T826e2VwWqBg1zdNeVPxtI1GifQKX)
+- [Ver el notebook completo en GitHub](Noero_Matias_LoRA_AGNews.ipynb)
+- [Abrir la versión de trabajo en Google Colab](https://colab.research.google.com/drive/1Jw5T826e2VwWqBg1zdNeVPxtI1GifQKX)
+
+El notebook incluye la instalación compatible para Colab, la preparación de AG News, el fine-tuning con LoRA, la evaluación sobre el test común y la exportación de resultados.
 
 ## Configuración principal
 
