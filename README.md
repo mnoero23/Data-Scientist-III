@@ -1,11 +1,8 @@
 # Data Scientist III - NLP & Deep Learning
 
-Repositorio central de proyectos y pre-entregas del curso **Data Science III**.
+Repositorio central de proyectos, pre-entregas y artefactos finales del curso **Data Scientist III**.
 
-El trabajo sigue una cadena incremental: primero se construye una
-infraestructura reproducible de entrenamiento y validación; luego se prepara un
-corpus real de NLP; finalmente se desarrollarán un baseline TF-IDF y un
-Transformer ajustado con LoRA para compararlos sobre el mismo conjunto de test.
+El recorrido construye una solución end-to-end: fundamentos de redes neuronales, preparación de un corpus real, baseline TF-IDF, fine-tuning eficiente de un Transformer con LoRA y comparación final sobre el mismo conjunto de prueba.
 
 ## Proyectos
 
@@ -13,112 +10,87 @@ Transformer ajustado con LoRA para compararlos sobre el mismo conjunto de test.
 |---|---|---|---|
 | Módulo 1 | [Pipeline base de Deep Learning](ds3_pipeline_base_1/) | Implementar entrenamiento y validación reproducibles con PyTorch sobre Iris | Accuracy de validación: **93,33%** |
 | Módulo 2 | [Preprocesamiento y EDA de NLP](ds3_eda_nlp_modulo2/) | Limpiar, lematizar y diagnosticar AG News sin usar el test | P95: **32 tokens**; 4 clases balanceadas |
-| Módulo 3 | [Clasificador supervisado con TF-IDF](ds3_tfidf_baseline_modulo3/) | Construir el baseline supervisado sobre el corpus del Módulo 2 | Accuracy: **89,25%**; F1 Macro: **0,8925** |
-| Módulo 4 | Transformer con LoRA | Ajustar eficientemente un Transformer sobre el mismo corpus | Próximamente |
-| Proyecto final | Comparación de modelos | Comparar TF-IDF y Transformer + LoRA sobre el mismo test | Próximamente |
+| Módulo 3 | [Clasificador supervisado con TF-IDF](ds3_tfidf_baseline_modulo3/) | Construir un baseline supervisado sobre el corpus del Módulo 2 | F1 weighted: **0,8925** |
+| Módulo 4 | [Transformer con LoRA](course_summary/) | Ajustar DistilBERT de forma eficiente sobre AG News | F1 weighted: **0,9070**; 1,095% entrenable |
+| Proyecto final | [Capstone y resumen integral](course_summary/) | Comparar TF-IDF y DistilBERT + LoRA sobre el mismo test | **+1,46 pp** de F1 weighted con LoRA |
 
-## Módulo 1 - Pipeline de entrenamiento y validación
+## Descargables finales
 
-Se implementó una red neuronal multicapa en PyTorch sobre Iris, con:
+- [Resumen completo del curso en PDF](course_summary/Resumen_Curso_Data_Scientist_III_Noero_Matias.pdf)
+- [Presentación visual del curso](course_summary/Presentacion_Curso_Data_Scientist_III_Noero_Matias.pptx)
+- [Informe técnico final - Capstone NLP](course_summary/NLP_Capstone_Noero_Matias.pdf)
 
-- división estratificada train/validation;
-- escalado ajustado exclusivamente con train;
-- detección automática de CUDA, MPS o CPU;
-- semillas para reproducibilidad;
-- ciclos separados de entrenamiento y validación;
-- registro de loss y accuracy por época.
+## Resultado comparativo
+
+Los dos modelos fueron evaluados sobre el mismo `ag_news_test.csv` de 2.000 noticias, con 500 ejemplos por clase.
+
+| Modelo | Precision macro | Recall macro | F1 macro | F1 weighted | Accuracy |
+|---|---:|---:|---:|---:|---:|
+| TF-IDF + LinearSVC | 0,8926 | 0,8925 | 0,8925 | 0,8925 | 0,8925 |
+| DistilBERT + LoRA | 0,9076 | 0,9070 | 0,9070 | 0,9070 | 0,9070 |
+
+LoRA obtuvo **1.814/2.000** predicciones correctas, frente a **1.785/2.000** del baseline.
+
+## Proyectos por módulo
+
+### Módulo 1 - Pipeline de entrenamiento y validación
+
+Red neuronal multicapa en PyTorch con split estratificado, escalado ajustado exclusivamente con train, semillas reproducibles y ciclos separados de entrenamiento y validación.
 
 [Ver proyecto y código](ds3_pipeline_base_1/)
 
-![Curvas de entrenamiento y validación](ds3_pipeline_base_1/results/training_curves.png)
+### Módulo 2 - Preprocesamiento y diagnóstico de NLP
 
-## Módulo 2 - Pipeline de Preprocesamiento y Diagnóstico
-
-Se trabajó con **AG News**, corpus de noticias en inglés con cuatro categorías.
-El pipeline incluye limpieza Regex, normalización, tokenización, lematización
-con SpaCy, análisis de frecuencias, n-gramas, longitudes y balance de clases.
-
-Principales resultados:
-
-- 8.000 documentos de entrenamiento;
-- 2.000 documentos de test reservados;
-- 2.000 documentos por categoría;
-- mediana de 23 tokens;
-- percentil 95 de 32 tokens;
-- ningún documento vacío después del pipeline.
+Pipeline sobre AG News con limpieza Regex, normalización, tokenización, lematización con SpaCy, frecuencias, n-gramas, longitudes y balance de clases.
 
 [Ver proyecto, código e informe](ds3_eda_nlp_modulo2/)
 
-![Distribución de longitud](ds3_eda_nlp_modulo2/reports/figures/distribucion_longitud.png)
+### Módulo 3 - Clasificador TF-IDF
 
-![Distribución de clases](ds3_eda_nlp_modulo2/reports/figures/distribucion_clases.png)
-
-## Módulo 3 - Clasificador supervisado con TF-IDF
-
-Se construyó un baseline reproducible de clasificación multiclase sobre AG News
-utilizando `TfidfVectorizer` y un clasificador `LinearSVC`. La selección de
-parámetros se realizó únicamente dentro del conjunto de entrenamiento para
-evitar data leakage.
-
-Principales resultados sobre 2.000 noticias de test:
-
-- Accuracy: **89,25%**;
-- F1 Macro: **0,8925**;
-- mejor configuración: unigramas + bigramas y hasta 40.000 características;
-- `Sports` fue la categoría más fácil de predecir;
-- la mayor confusión se produjo entre `Business` y `Sci_Tech`.
+Baseline multiclase con `TfidfVectorizer` y `LinearSVC`. La selección de parámetros se realizó dentro de train para evitar data leakage.
 
 [Ver proyecto, código y resultados](ds3_tfidf_baseline_modulo3/)
 
-![Matriz de confusión](ds3_tfidf_baseline_modulo3/results/confusion_matrix.png)
+### Módulo 4 - DistilBERT + LoRA
+
+Fine-tuning eficiente con r=8, alpha=16, dropout=0,1, target modules `q_lin`/`v_lin`, learning rate 2e-4 y 3 épocas. Se entrenaron 741.124 de 67.697.672 parámetros.
+
+[Ver resumen, presentación e informe final](course_summary/)
 
 ## Principios del proyecto
 
-- **Reproducibilidad:** semillas, dependencias y parámetros documentados.
-- **Prevención de data leakage:** los ajustes se realizan únicamente con train.
-- **Trazabilidad:** se conservan resultados, métricas e informes.
-- **Continuidad:** AG News será el corpus común de los Módulos 2, 3 y 4 y del
-  Proyecto Final.
-- **Comparabilidad:** los modelos se evaluarán sobre el mismo conjunto de test.
+- **Reproducibilidad:** semillas, parámetros y resultados documentados.
+- **Prevención de data leakage:** transformaciones ajustadas únicamente con train.
+- **Comparabilidad:** mismo conjunto de test para ambos modelos finales.
+- **Trazabilidad:** métricas, matrices, informes y limitaciones conservados.
+- **Interpretación responsable:** no se afirma evidencia de atención que no fue calculada.
 
 ## Tecnologías
 
-- Python
-- PyTorch
+- Python y PyTorch
 - pandas y NumPy
 - scikit-learn
 - SpaCy
 - Matplotlib y Seaborn
-- Hugging Face Transformers y PEFT/LoRA en las próximas etapas
+- Hugging Face Transformers
+- PEFT / LoRA
 
 ## Estructura del repositorio
 
 ```text
 Data-Scientist-III/
 ├── ds3_pipeline_base_1/
-│   ├── data/
-│   ├── results/
-│   ├── src/
-│   └── README.md
 ├── ds3_eda_nlp_modulo2/
-│   ├── data/
-│   ├── reports/
-│   ├── results/
-│   ├── src/
-│   └── README.md
 ├── ds3_tfidf_baseline_modulo3/
-│   ├── data/
-│   ├── results/
-│   ├── src/
-│   └── README.md
+├── course_summary/
+│   ├── README.md
+│   ├── Resumen_Curso_Data_Scientist_III_Noero_Matias.pdf
+│   ├── Presentacion_Curso_Data_Scientist_III_Noero_Matias.pptx
+│   └── NLP_Capstone_Noero_Matias.pdf
 └── README.md
 ```
-
-Cada proyecto posee sus propias instrucciones de instalación, ejecución y
-reproducción de resultados.
 
 ## Autor
 
 **Matías Noero**  
 Analista de datos en formación continua hacia Data Science, NLP y Deep Learning.
-
